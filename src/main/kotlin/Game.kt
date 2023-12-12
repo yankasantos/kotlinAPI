@@ -1,8 +1,8 @@
 import com.google.gson.annotations.SerializedName
 
 class Game(
-    @SerializedName("title") val title:String,
-    @SerializedName("thumb") val picture:String
+     val title:String,
+     val picture:String
 ) {
     val description = ""
     override fun toString(): String {
