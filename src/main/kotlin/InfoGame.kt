@@ -1,4 +1,4 @@
-class InfoGame(val info:InfoApiCheapShark) {
+data class InfoGame(val info:InfoApiCheapShark) {
     override fun toString(): String {
         return info.toString()
     }
