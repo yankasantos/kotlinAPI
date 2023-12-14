@@ -1,4 +1,5 @@
 import com.google.gson.Gson
+import java.lang.NullPointerException
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -23,6 +24,14 @@ fun main() {
 
     val gson = Gson()
     val infoGameAvailable = gson.fromJson(json, InfoGame::class.java)
-    val gameAvailable = Game(infoGameAvailable.info.title, infoGameAvailable.info.thumb)
-    println(gameAvailable)
+
+    try {
+        val gameAvailable = Game(
+            infoGameAvailable.info.title,
+            infoGameAvailable.info.thumb)
+        println(gameAvailable)
+    }catch (ex: NullPointerException){
+        println("Jogo inexistent. Tente outro id.")
+    }
+
 }
