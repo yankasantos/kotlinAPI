@@ -25,12 +25,13 @@ fun main() {
     val gson = Gson()
     val infoGameAvailable = gson.fromJson(json, InfoGame::class.java)
 
-    try {
+    val result = runCatching {
         val gameAvailable = Game(
             infoGameAvailable.info.title,
             infoGameAvailable.info.thumb)
         println(gameAvailable)
-    }catch (ex: NullPointerException){
+    }
+    result.onFailure {
         println("Jogo inexistent. Tente outro id.")
     }
 
